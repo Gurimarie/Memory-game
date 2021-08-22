@@ -33,12 +33,16 @@
             <button id="color-shaker"><i class="fas fa-palette"></i><i class="fas fa-paint-brush"></i>
             </button>
         </div>
+        <div class="block float-right">
+            <button id="explanation" type="button" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fas fa-question"></i>
+            </button>
+        </div>
         <h1>Can you find the match?</h1>
         <div class="container" id="game-container">
             <div class="score-area d-flex justify-content-around container">
                 <!--Div for score and timer, or should that be somewhere else??-->
                 <div class="inline-block highest-score">Highest score: <span id="highest-score">0</span></div>
-                <div class="inline-block timer">Time remaining: <span id="timer">60 sek</span></div>
+                <div class="inline-block timer">Time: <span id="timer">60 sek</span></div>
                 <div class="inline-block current-score">Current score: <span id="current-score">100</span></div>
             </div>
 
@@ -69,12 +73,29 @@
         </div>
     </div>
 
+    <!-- Footer -fixed on bottom. Contains copyright, contact-info. Perhaps sosial-links? -->
     <footer class="container-fluid footer fixed-bottom">
         <div id="contact" class="sm-inline">info@svenbergdesignlab.com </div>
         <div id="copyright" class="sm-inline float-sm-right">&copy;Svenberg Design Lab 2021 </div>
-        <!--always on bottom. Contains copyright, contact-info, sosial-links?-->
+
     </footer>
 
+    <!-- Credit: Modal for explaining the game, from https://getbootstrap.com/docs/4.1/components/modal/-->
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <h2>Memory-game - rules and explanations</h2>
+                <h3>How to play the game</h3>
+                <P>There are 12 cards, and each of the has either an equations or the answer to one of the equations. By opening two cards at a time, you will for each game try to locate 6 equations and the answer that is correct for each equation. For example,
+                    if one card has the equation 5 x 5, the corresponding answer-card will have the value of 25. The two cards must be opened together, in order to count as a match.
+                </P>
+                <h3>Timer</h3>
+                <p>You only have 60 seconds to complete each game, and the timer starts when the first cards are opened. </p>
+                <h3>Score</h3>
+                <p>You start each game with 100 point. For each card you open, 5 points are deducted, i.e. 10 points for each pair you open. When you open a matching pair, you get 30 point (minus 10 for opening two cards = net 20)</p>
+            </div>
+        </div>
+    </div>
     <!-- bootstrap js + + -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

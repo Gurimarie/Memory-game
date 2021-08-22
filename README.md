@@ -1,6 +1,7 @@
 # MEMORY-GAME
 ## Match six equations with their answers, in under 1 minute
-Info about the scope of the website
+
+The idea is to randomly assign pairs of random equations and their respective answers to the "game-cards", let the 
 
 
 ![Picture of different view-port-displays]()
@@ -76,6 +77,10 @@ Press the
 
 ## Issues overcome
 
+Gameinstructions have been added as a modal, overlaying the whole page. This option has been chosen, in order to be able to explain the game, without having a lot of tekst on the page. The modal is triggered by clicking the question-mark-button on the top right.
+
+
+What if two equations on the board have same answer? The check-answer must do the calculation, and not just look for pairs, otherwise a right answer may be rejected because it is not the right pair.
 
 
 
@@ -84,6 +89,7 @@ Press the
 - html
 - css
 - Bootstrap
+- jQuery
 
 ### Frameworks, libraries and programs:
 - Bootstrap
@@ -142,7 +148,11 @@ The issue was finally solved with class="col-3 col-lg-2” for the three first b
 
 
 ## Unfixed bugs:
+### Website height
+The website is supposed to be the height of the viewport, with no need for scrolling, but I have difficulty managing that while keeping nav and footer fixed at top and bottom. As it is there is a little scroll available, but it is not necessary to scroll the page to see it all, so it does not seem to hinder the game.
 
+### The game itself is not set up yet, only planned
+It will take a bit of research to figure out how to randomly assign pairs of random equations and their respective answers to the "game-cards", 
 
 
 ## Deployment
