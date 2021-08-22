@@ -58,7 +58,7 @@ Currently there are no images added to the game, only colours.
 ## Features
 
 - ### Random colours
-Press the 
+Press the painters-button to add new colours randomly to all the "game-cards" and to the background-color of the website. Keep clicking, until you find a combination you like! :)
 ![Picture of button for random colours](assets/images/readme-images/random-color-button.JPG)
 
 - Feature 2 included
@@ -66,7 +66,7 @@ Press the
 
 
 #### Future features:
-- Option to change color-scheme on the webpage, both for convenience (for instance using a darker theme in the evening) and accordigng to the users preference.
+
 - Option to play as guest, or to log in with user, to keep track of scores, see other users best scores, and keep chosen colour-schemes.
 - A timer that counts down as you solve the tasks, and when the counter reaches 0, its game over.
 - A beeper that makes a noise every second for the last 10 seconds of each game (with option to turn sound off).
@@ -77,9 +77,13 @@ Press the
 
 ## Issues overcome
 
-Gameinstructions have been added as a modal, overlaying the whole page. This option has been chosen, in order to be able to explain the game, without having a lot of tekst on the page. The modal is triggered by clicking the question-mark-button on the top right.
+### Instructions for playing
+Instructions for playing the game have been added as a modal, overlaying the whole page. This option has been chosen, in order to be able to explain the game, without having a lot of tekst on the page. The modal is triggered by clicking the question-mark-button on the top right.
 
+### Media-query
+Added a media-query to to scale main headline (h1) well beth for smaller and larger devicer. 
 
+### Several right answers
 What if two equations on the board have same answer? The check-answer must do the calculation, and not just look for pairs, otherwise a right answer may be rejected because it is not the right pair.
 
 
@@ -101,8 +105,17 @@ What if two equations on the board have same answer? The check-answer must do th
 ## Testing
 
 ### Validation:
-HTML validation
-CSS validation
+#### HTML validation
+Html-content checked with https://validator.w3.org/nu/#textarea
+
+![Picture of HTML verification](assets/images/readme-images/html-validator.JPG)
+
+#### CSS validation
+CSS tested with W3C CSS Validator Service. 
+After having corrected a few small errors, everything is as it should be.
+
+![Picture of CSS verification](assets/images/readme-images/css-validator.JPG)
+
 JS validation
 
 
