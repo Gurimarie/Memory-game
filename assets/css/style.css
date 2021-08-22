@@ -6,7 +6,7 @@ body {
     height: 100%;
 }
 
-nav ul {
+nav {
     list-style: none;
     color: #fff;
     background-color: black;
@@ -15,24 +15,22 @@ nav ul {
     margin: 0;
 }
 
-nav li {
-    display: inline-block;
-}
-
-nav button {
-    background-color: black;
-    color: white;
+.hamburger-dark {
+    color: black;
+    background-color: white;
+    border: 0;
 }
 
 nav a {
     text-decoration: none;
     color: #fff;
-    display: block;
+    display: inline-block;
+    background-color: black;
 }
 
 nav a:hover {
-    background-color: #fff;
-    color: #4a4a4f;
+    background-color: rgb(75, 72, 72);
+    color: #f0f0f5;
 }
 
 h1 {
@@ -60,12 +58,11 @@ h1 {
 
 /* big container around everything (except h1) */
 
-.game-container {
+#game-container {
     padding: 20px;
     padding-bottom: 50px;
     background-color: rgb(248, 249, 252);
     border: solid 1px;
-    margin: 20px 100px;
 }
 
 
@@ -90,3 +87,29 @@ h1 {
     background-color: black;
     color: white;
 }
+
+
+/* Credit: media-query-template from "https://getbootstrap.com/docs/4.1/layout/overview/"
+
+// Extra small devices (portrait phones, less than 576px)
+// No media query for `xs` since this is the default in Bootstrap
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+    ...
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+    ...
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+    ...
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+    ...
+}
+*/
