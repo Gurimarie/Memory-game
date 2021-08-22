@@ -2,7 +2,8 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif;
-    background-color: rgb(131, 131, 231);
+    background-color: rgb(130, 130, 212);
+    height: 100%;
 }
 
 nav ul {
@@ -16,6 +17,11 @@ nav ul {
 
 nav li {
     display: inline-block;
+}
+
+nav button {
+    background-color: black;
+    color: white;
 }
 
 nav a {
@@ -32,32 +38,55 @@ nav a:hover {
 h1 {
     text-align: center;
     font-family: 'Permanent Marker', cursive;
+    margin-top: 1.5em;
+}
+
+.content {
+    height: 100vh;
+}
+
+
+/*elements in score-area*/
+
+.highest-score,
+.timer,
+.current-score {
+    display: inline-block;
+    border: solid 1px;
+    margin-bottom: 10px;
+    padding: 2px 6px;
 }
 
 
 /* big container around everything (except h1) */
 
-.game-container {}
+.game-container {
+    padding: 20px;
+    padding-bottom: 50px;
+    background-color: rgb(248, 249, 252);
+    border: solid 1px;
+    margin: 20px 100px;
+}
 
 
 /* div around game-boxes*/
 
-#game-area {}
-
-.card {
-    float: left;
-    width: 20%;
-    margin-left: 10%;
-    height: 200px;
-    padding-bottom: 10%;
-    text-align: center;
+#game-area {
+    height: 40vh;
 }
 
-#contact {
-    left: 0em;
-}
-
-#copyright {
-    right: 0em;
+.game-card {
     display: inline-block;
+    border: solid 1px;
+    width: 15vw;
+    height: 10vh;
+    text-align: center;
+    background-color: rgb(70, 45, 129);
+    padding: 15px 1px;
+    margin: 10px;
+}
+
+.footer {
+    background-color: black;
+    color: white;
 }

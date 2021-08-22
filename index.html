@@ -18,28 +18,47 @@
 
 <body>
     <header>
-        <nav class="navbar-nav">
+        <nav class="navbar-nav fixed-top">
             <ul>
-                <li>Memory-game</li>
-                <li><button>Log-In/Sign-Up</button></li>
-                <li><button>Change color</button></li>
+                <li class="float-left">Memory-game</li>
+                <li class="float-right"><button>Log-In/Sign-Up</button></li>
+                <li class="float-right"><button>Change color</button></li>
             </ul>
         </nav>
 
         <!-- navbar always on top, with title, and buttons for info, LogIn and Change-color-scheme-->
     </header>
-    <h1>Can you find the match?</h1>
-    <div class="game-container">
-        <!--Div for score and timer, or should that be somewhere else??-->
-        <div id="game-area">
-            <!--flex-boxes with cards? -->
+    <div class="content">
+        <h1>Can you find the match?</h1>
+        <div class="game-container">
+            <div class="score-area d-flex justify-content-between">
+                <!--Div for score and timer, or should that be somewhere else??-->
+                <div class="inline-block highest-score">Highest score: <span id="highest-score">0</span></div>
+                <div class="inline-block timer">Time remaining: <span id="timer">60 sek</span></div>
+                <div class="inline-block current-score">Current score: <span id="current-score">100</span></div>
+            </div>
 
+
+            <div id="game-area d-flex justify-content-between">
+                <div class="inline-block game-card card-1">1</div>
+                <div class="inline-block game-card card-2">2</div>
+                <div class="inline-block game-card card-3">3</div>
+                <div class="inline-block game-card card-4">4</div>
+                <div class="inline-block game-card card-5">5</div>
+                <div class="inline-block game-card card-6">6</div>
+                <div class="inline-block game-card card-7">7</div>
+                <div class="inline-block game-card card-8">8</div>
+                <div class="inline-block game-card card-9">9</div>
+                <div class="inline-block game-card card-10">10</div>
+                <div class="inline-block game-card card-11">11</div>
+                <div class="inline-block game-card card-12">12</div>
+            </div>
         </div>
     </div>
 
-    <footer class="container-fluid">
-        <span id="contact">info@svenbergdesignlab.com </span>
-        <span id="copyright">&copy;Svenberg Design Lab 2021 </span>
+    <footer class="container-fluid footer fixed-bottom">
+        <div id="contact" class="sm-inline">info@svenbergdesignlab.com </div>
+        <div id="copyright" class="sm-inline float-sm-right">&copy;Svenberg Design Lab 2021 </div>
         <!--always on bottom. Contains copyright, contact-info, sosial-links?-->
     </footer>
 
