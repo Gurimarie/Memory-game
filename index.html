@@ -21,31 +21,18 @@
         <nav class="navbar fixed-top navbar-expand-md">
             <a href="index.html" class="navbar-brand">Memory-game</a>
 
-            <!--- Collapse nav to hamburger-icon for smaller devices, copied from milestone-project 1 and adapted -->
-            <button class="navbar-toggler ml-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-navdropdown" aria-controls="navbar-navdropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon hamburger-dark"></span>
-            </button>
+            <div class="inline float-right"><button>Log-In/Sign-Up</button></div>
 
-            <div class="collapse navbar-collapse justify-content-end dropdown-menu-end" id="navbar-navdropdown">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item mr-2"><a href="login.html" class="nav-link">Log-In/Sign-Up</a></li>
 
-                    <!-- Dropdown color-change-menu -->
-                    <li class="nav-item dropdown mr-2">
-                        <a class="nav-link dropdown-toggle" href="" id="navbar-dropdown-menulink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Change colours!</a>
-                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbar-dropdown-menulink">
-                            <li class="nav-item dropdown col-1">Color 1</li>
-                            <li class="nav-item dropdown col-2">Color 2</li>
-                            <li class="nav-item dropdown col-3">Color 3</li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
         </nav>
     </header>
 
 
     <div class="content container-fluid">
+        <div class="block float-right">
+            <button id="color-shaker"><i class="fas fa-palette"></i><i class="fas fa-paint-brush"></i>
+            </button>
+        </div>
         <h1>Can you find the match?</h1>
         <div class="container" id="game-container">
             <div class="score-area d-flex justify-content-around container">

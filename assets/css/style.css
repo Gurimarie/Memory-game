@@ -4,6 +4,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     background-color: rgb(130, 130, 212);
     height: 100%;
+    color: black;
 }
 
 nav {
@@ -37,6 +38,7 @@ h1 {
     text-align: center;
     font-family: 'Permanent Marker', cursive;
     margin-top: 1.5em;
+    color: black;
 }
 
 .content {
