@@ -1,7 +1,9 @@
 # MEMORY-GAME
 ## Match six equations with their answers, in under 1 minute
 
-The idea is to randomly assign pairs of random equations and their respective answers to the "game-cards", let the 
+This is the website for a game where 12 cards, and each card is randomly assigned one of a pair of random equations and their respective answers. By opening two cards at a time, the user will for each game try to locate 6 equations and the answer that is correct for each equation. For example, if one card has the equation 5 x 5, the corresponding answer-card will have the value of 25. The two cards must be opened together, in order to count as a match. The user opens two and two cards, trying to find and open the correct pairs.
+
+To adde to the games difficulty, there is a timelimit of 1 minute to find and open all the pairs, and there is also a limit regarding how many cards you may open without finding a pair (see user-instructions by clicking on the questionmark-button in the top right of the website.) 
 
 
 ![Picture of different view-port-displays]()
@@ -32,13 +34,11 @@ That people enjoy playing, and
 ## Design
 
 ### Colour scheme:
-....
-
-![Picture of colour scheme]()
+The colour-scheme is randomized, so that the user may choose a setting that pleases them or that fits their mood when playing. The colours are picked at random from all the possible colours in the RGB-system, and the user may press the button as may times as they wish, until a pleasing colour emerges. Or they may stay with the default blu-tones that are there when the website is loaded or refreshed.  
 
 
 ### Typography:
-....
+The font Permanent Marker has a juvenile and almost grafitti-like aspect to it, and it is well suited for the colourful and sometimes psychedelic colour-combinations that form when we use the random-colour-button. It also seems to have a fast and "in motion"-feeling, that works well with the speed needed to complete the tast at hand in less that 1 minute. 
 
 ![Picture of fonts samples](assets/images/readme-images/Fonts-permanent-parker-and-montserrat.JPG)
 
@@ -61,12 +61,13 @@ Currently there are no images added to the game, only colours.
 Press the painters-button to add new colours randomly to all the "game-cards" and to the background-color of the website. Keep clicking, until you find a combination you like! :)
 ![Picture of button for random colours](assets/images/readme-images/random-color-button.JPG)
 
-- Feature 2 included
-- Feature 3 included
+- ### Instructions
+Instructions for how to play are added in a modal, in order to keep the webpage itself clean and less distractive (than it would have been with instructions).
+
 
 
 #### Future features:
-
+- A game that is fully functional and that works.
 - Option to play as guest, or to log in with user, to keep track of scores, see other users best scores, and keep chosen colour-schemes.
 - A timer that counts down as you solve the tasks, and when the counter reaches 0, its game over.
 - A beeper that makes a noise every second for the last 10 seconds of each game (with option to turn sound off).
@@ -90,8 +91,8 @@ What if two equations on the board have same answer? The check-answer must do th
 
 ## Technology used
 ### Programming languages:
-- html
-- css
+- HTML
+- CSS
 - Bootstrap
 - jQuery
 
@@ -155,17 +156,19 @@ The issue was finally solved with class="col-3 col-lg-2” for the three first b
 ![Picture of alignment-issue fixed](assets/images/readme-images/alignment-issue-game-area-fixed.JPG)
 
 
-### Bug 2
-![Picture of problem]()
+### Problem with colour-picker
+The random colour-button stopped working for a while, but it turned out to be because of empty functions in script.js that I had made as I planned the structure of how the finished JavaScript would be. One extra, open parentheses stopped the file from working. 
 
 
 
 ## Unfixed bugs:
 ### Website height
-The website is supposed to be the height of the viewport, with no need for scrolling, but I have difficulty managing that while keeping nav and footer fixed at top and bottom. As it is there is a little scroll available, but it is not necessary to scroll the page to see it all, so it does not seem to hinder the game.
+The website is supposed to be the height of the viewport, with no need for scrolling, but I have difficulty managing that while keeping nav and footer fixed at top and bottom. As it is there is a little scroll available, but it is not necessary to scroll the page to see it all, so it does not seem to hinder the game. I have been tinckering with this a bit, and it seems to work now on most devices, but I am not certain it is truly gone.
 
 ### The game itself is not set up yet, only planned
 It will take a bit of research to figure out how to randomly assign pairs of random equations and their respective answers to the "game-cards", 
+
+
 
 
 ## Deployment
@@ -173,7 +176,7 @@ This project was developed using Visual Studio Code, committed to git and pushed
 
 ### Steps to deploy this page to GitHub Pages from GitHub repository:
 1. Log into GitHub.
-2. Find the project "" from the list of repositories and open it.
+2. Find the project "Memory-game" from the list of repositories and open it.
 3. Go to the “Settings”-option.
 4. Scroll down to the section called “Pages” in the menu on the left side, and click it to open the Github-pages page.
 5. Under "Source", select the correct branch (in this case, “main”), and click on the Save-button.
@@ -183,18 +186,20 @@ This project was developed using Visual Studio Code, committed to git and pushed
 Use this link to access the deployed website.
 
 
-### Forking the GitHub repository:
-
-
-
 ### Making a local clone:
-1. Follow this link (MUST BE LINKED UP!) to the projects Github repository.
+1. Follow this link to the [projects Github repository](https://github.com/Gurimarie/Memory-game)).
 2. Under the repository name, click the green "Code"-button, and choose "https" and click on the "Download Zip"-option.
 3. When the zip is downloaded, open the folder, and move the unzipped folder to where you wish to store it on your computer.
 4. Open your Visual Studio Code (or other programming-software), click File, Open Folder, and choose the unzipped folder you just downloaded from where you saved it to.
  
-
-
+### Forking the GitHub repository:
+1. Log into GitHub.
+2. Find the project "Memory-game" from the list of repositories and open it.
+3.	In the top-right corner of the page, click Fork.
+![Picture of the fork-button](assets/images/readme-images/fork-repository.JPG)
+4. Then navigate to your fork of the Memory-game"repository, and download it by clicking on the "Code"-button like in the instruction for making a local clone, above. Choose "https" and click on the "Download Zip"-option.
+3. When the zip is downloaded, open the folder, and move the unzipped folder to where you wish to store it on your computer.
+4. Open your Visual Studio Code (or other programming-software), click File, Open Folder, and choose the unzipped folder you just downloaded from where you saved it to.
 
 
 ## Credits
@@ -203,6 +208,7 @@ Use this link to access the deployed website.
 - Random-color-function from AndreFelipeCL, found at "https://stackoverflow.com/questions/20553036/random-color-in-jquery"
 - README-structure heavily insipred by https://github.com/PaulFrankling/discover-north-yorks.
 - Code Institute courses for everything
+- https://getbootstrap.com/docs/4.1/components/ for modal and info and examples of different grid-options and visibility.
 
 ### Content:
 
