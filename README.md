@@ -18,9 +18,12 @@ Click here to view the website
 .....
 
 ### Frequent user goals
+Log in to keep track of past scores, and chosen color-scheme.
+
 .....
 
 ### Site owner goals
+That people enjoy playing, and 
 .........
 
 
@@ -29,7 +32,9 @@ Click here to view the website
 
 ### Colour scheme:
 ....
-![Picture of colour scheme]()
+
+![Picture of colour scheme]("assets/images/readme-images/Fonts-permanent-parker-and-montserrat.JPG")
+
 
 ### Typography:
 ....
