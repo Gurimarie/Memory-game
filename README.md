@@ -6,28 +6,27 @@ This is the website for a game where 12 cards, and each card is randomly assigne
 To adde to the games difficulty, there is a timelimit of 1 minute to find and open all the pairs, and there is also a limit regarding how many cards you may open without finding a pair (see user-instructions by clicking on the questionmark-button in the top right of the website.) 
 
 
-![Picture of different view-port-displays]()
+![Picture of different view-port-displays](assets/images/readme-images/am-i-responsive.jpg)
 
-Click here to view the website
+Click [here](https://gurimarie.github.io/Memory-game/) to view the website
 
 ## User Experience (UX)
 
 ### User stories:
 
 ### First time visitor goals
-.....
+The user is curious and pushes the buttons. Reads the instructions and tries the game.
 
 ### Returning visitor goals
-.....
+When the game is up and running, it will be an enjoyable game to gome back to. Strethcing the brain a little, while there are options to guess from, so not too hard. But still on the clock... 
 
 ### Frequent user goals
-Log in to keep track of past scores, and chosen color-scheme.
+In the future there will be an option to log in to keep track of past scores, and chosen color-scheme, and to compare with other players. Always with the possibility of new and crazy colour-schemes, and a little stimuli for the brain is always good.
 
-.....
 
 ### Site owner goals
-That people enjoy playing, and 
-.........
+The site-owner enjoys working out the brain a little, as long as it is fun, and not too hard, so as long as the users (including the owner) are enjoying themselves, the project-scope is reached.
+(But alas not yet, as the game-part of the website is not yet finished.)
 
 
 
@@ -118,22 +117,17 @@ After having corrected a few small errors, everything is as it should be.
 ![Picture of CSS verification](assets/images/readme-images/css-validator.JPG)
 
 JS validation
+There is very little JavaScript in the project at present, but from my first-time use of the JS-validator (https://jshint.com/), it seemed OK.
 
 
 ### Testing for user stories in UX-section:
 
 ### Further testing:
 #### Test on different screen sizes:
-Expected: X when Y
-Testing: do Y
-Result: The site did not respond due to ..."A" or: the site acted as expected and did X
-Fix: Did Z to the code because of problem..."A"
+The top of the page has been fine even on small devices when testing in chrome developer tools, but on the "Am I responsive"-picture it seemed cut off, so there may be a problem in some devices.
 
 #### Test on different browsers:
-Expected: X when Y
-Testing: do Y
-Result: The site did not respond due to ..."A" or: the site acted as expected and did X
-Fix: Did Z to the code because of problem..."A"
+Tested in Chrome and Edge, and works fine on both of those browsers.
 
 <br>
 
