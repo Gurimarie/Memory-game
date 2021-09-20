@@ -99,6 +99,7 @@ What if two equations on the board have same answer? The check-answer must do th
 - Bootstrap
 - Google Fonts
 - Font-awsome
+- YouTube
 
 
 
@@ -203,6 +204,10 @@ Use this link to access the deployed website.
 - README-structure heavily insipred by https://github.com/PaulFrankling/discover-north-yorks.
 - Code Institute courses for everything
 - https://getbootstrap.com/docs/4.1/components/ for modal and info and examples of different grid-options and visibility.
+- Overlay-details (html and CSS) from YouTube-channel "Web Dev Simplified", video "How to Code a Card Matching Game"
+#### Tutorials for memory-game:
+- Adam Khoury, Memory Game Programming JavaScript Tutorial, YouTube (https://www.youtube.com/watch?v=c_ohDPWmsM0)
+- 
 
 ### Content:
 

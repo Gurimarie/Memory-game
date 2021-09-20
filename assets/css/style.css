@@ -45,13 +45,49 @@
                     .content {
                         height: 85vh;
                     }
+                    /* overlay-details from YouTube-channel "Web Dev Simplified", video "How to Code a Card Matching Game"*/
+                    
+                    .overlay-text {
+                        display: none;
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        justify-content: center;
+                        align-items: center;
+                        z-index: 100;
+                        color: orange;
+                        font-family: 'Permanent Marker', cursive;
+                    }
+                    
+                    .overlay-text-small {
+                        font-size: .4em;
+                    }
+                    
+                    .overlay-text.visible {
+                        display: flex;
+                        flex-direction: column;
+                        animation: overlay-grow 500ms forwards;
+                        text-align: center;
+                    }
+                    
+                    @keyframes overlay-grow {
+                        from {
+                            background-color: rgba(0, 0, 0, 0);
+                            font-size: 0;
+                        }
+                        to {
+                            font-size: 3.5em;
+                            background-color: rgba(0, 0, 0, 0.7);
+                        }
+                    }
                     /*elements in score-area*/
                     
                     .highest-score,
                     .timer,
                     .current-score {
                         display: inline-block;
-                        border: solid 1px;
                         margin-bottom: 10px;
                         padding: 2px 6px;
                         width: 20vw;
@@ -78,6 +114,7 @@
                         background-color: rgb(70, 45, 129);
                         padding: 15px 1px;
                         margin: 10px;
+                        cursor: pointer;
                     }
                     
                     .footer {
