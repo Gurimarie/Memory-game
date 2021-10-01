@@ -206,12 +206,17 @@ Use this link to access the deployed website.
 - https://getbootstrap.com/docs/4.1/components/ for modal and info and examples of different grid-options and visibility.
 - Overlay-details (html and CSS) from YouTube-channel "Web Dev Simplified", video "How to Code a Card Matching Game"
 #### Tutorials for memory-game:
-- Adam Khoury, Memory Game Programming JavaScript Tutorial, YouTube (https://www.youtube.com/watch?v=c_ohDPWmsM0)
-- 
+---- Adam Khoury, Memory Game Programming JavaScript Tutorial, YouTube (https://www.youtube.com/watch?v=c_ohDPWmsM0)
+- PortEXE, How To Code A Card Game In Plain JavaScript - Spooky Halloween Edition, YouTube (https://www.youtube.com/watch?v=3uuQ3g92oPQ&t=2044s)
 
 ### Content:
 
 ### Media used:
+- Sounds from Freesound.org
+Flip-sound: https://freesound.org/people/Splashdust/sounds/84322/
+Match-sound: https://freesound.org/people/Tuudurt/sounds/362445/
+Victory-sound: https://freesound.org/people/FunWithSound/sounds/456966/
+Game over-sound: https://freesound.org/people/noirenex/sounds/159408/
 
 ### Acknowledgements:
 

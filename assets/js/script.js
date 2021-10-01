@@ -1,3 +1,24 @@
+class audioController {
+    constructor() {
+        this.flipSound = new Audio('assets/audio/84322__splashdust__flipcard.wav');
+        this.matchSound = new Audio('assets/audio/362445__tuudurt__positive-response');
+        this.victorySound = new Audio('assets/audio/456966__funwithsound__success-fanfare-trumpets');
+        this.gameOverSound = new Audio('assets/audio/159408__noirenex__life-lost-game-over');
+    }
+    flip() {
+        this.flipSound.play();
+    }
+    match() {
+        this.flipSound.play();
+    }
+    victory() {
+        this.victorySound.play();
+    }
+    gameOver() {
+        this.gameOverSound.play();
+    }
+}
+
 $(document).ready(function() {
     $("#color-shaker").click(function() {
         // Credit: Random-color-function from AndreFelipeCL, found at "https://stackoverflow.com/questions/20553036/random-color-in-jquery"
@@ -15,6 +36,28 @@ $(document).ready(function() {
         });
 
     });
+
+    // Credit: PortEXE, How To Code A Card Game In Plain JavaScript - Spooky Halloween Edition, 
+    //YouTube (https://www.youtube.com/watch?v=3uuQ3g92oPQ&t=2044s)
+
+    let overlays = Array.from(document.getElementsByClassName('overlay-text'));
+    let cards = Array.from(document.getElementsByClassName('game-card')); //"card" in youtube-tutorial
+
+    overlays.forEach(overlay => {
+        overlay.addEventListener('click', () => {
+            overlay.classList.remove('visible');
+            //game.startGame()
+        });
+        cards.forEach(card => { //card or game-card?
+            card.addEventListener('click', () => {
+                //game.flipCard(card);
+            })
+        })
+    });
+
+
+
+
 
     // Card options
     const cardArray = [
