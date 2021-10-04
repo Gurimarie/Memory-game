@@ -31,7 +31,7 @@ class mixOrMatch {
 
     startGame() {
         this.cardToCheck = null;
-        this.totalClicks = 0;
+        this.currentScore = 100;
         this.timeRemaining = this.totalTime;
         this.matchedCards = [];
         this.busy = true;
@@ -43,7 +43,7 @@ class mixOrMatch {
         }, 500);
         this.hideCards();
         this.timer.innerText = this.timeRemaining;
-        this.ticker.innerText = this.totalClicks;
+        this.ticker.innerText = this.currentScore;
     }
 
     hideCards() {
@@ -56,11 +56,12 @@ class mixOrMatch {
     flipCard(card) {
         if (this.canFlipCard(card)) {
             this.audioController.flip();
-            this.totalClicks++;
-            this.ticker.innerText = this.totalClicks;
-            // This regards card-set-up with two images (front and back), where the visible-class indicates which side is visible
-            card.classList.add('visible');
-
+            setTimeout(() => {
+                this.currentScore--;
+                this.ticker.innerText = this.currentScore;
+                // Add 'visible'-class to show card-content
+                card.classList.add('visible');
+            }, 300);
             //if statement (check for match)
             if (this.cardToCheck)
                 this.checkForCardMatch(card);
@@ -69,8 +70,9 @@ class mixOrMatch {
         }
     }
 
+    //This must be 'check math-match' instead of string-match
     checkForCardMatch(card) {
-        if (this.getCardType(card) === this.getCardType(this.cardToCheck))
+        if (this.getCardContent(card) == this.getCardContent(this.cardToCheck))
             this.cardMatch(card, this.cardToCheck);
         else
             this.cardMisMatch(card, this.cardToCheck);
@@ -84,6 +86,7 @@ class mixOrMatch {
         card1.classList.add('matched');
         card2.classList.add('matched');
         this.audioController.match();
+        this.currentScore++;
         if (this.matchedCards.length === this.cardsArray.length)
             this.victory();
     }
@@ -98,11 +101,12 @@ class mixOrMatch {
 
     }
 
-    //This must be 'check math-match' instead of string-match
-    //getCardType(card) {
-    // return card.getElementsByClassName('card-value')[0].src;
-    //}
+    getCardContent(card) {
+        // return card.getElementsByClassName('card-value')[0].src;
+        return this.innerText;
+    }
 
+    // Should not start until first card-click
     startCountDown() {
         return setInterval(() => {
             // Count down by 1 (--) every sec (1000)
@@ -140,7 +144,7 @@ class mixOrMatch {
     }
     canFlipCard(card) {
         // If all instances that makes the card unflippable are false, then...
-        return !this.busy && !this.matchedCards.includes(card) && !== this.cardToCheck
+        return !this.busy && !this.matchedCards.includes(card) && !this.cardToCheck
     }
 }
 
@@ -166,8 +170,9 @@ $(document).ready(function() {
     //YouTube (https://www.youtube.com/watch?v=3uuQ3g92oPQ&t=2044s)
 
     let overlays = Array.from(document.getElementsByClassName('overlay-text'));
+    // In Halloween-tutorial cards have fixed class-values that are never changed (just shuffeled)
     let cards = Array.from(document.getElementsByClassName('game-card')); //"card" in youtube-tutorial
-    let game = new mixOrMatch(100, cards);
+    let game = new mixOrMatch(10, cards);
 
     overlays.forEach(overlay => {
         overlay.addEventListener('click', () => {
