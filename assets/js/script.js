@@ -35,38 +35,46 @@ class mixOrMatch {
         this.timeRemaining = this.totalTime;
         this.matchedCards = [];
         this.busy = true;
-
         setTimeout(() => {
-            this.shuffleCards();
+            this.shuffleCards(this.cardsArray);
             this.countDown = this.startCountDown();
             this.busy = false;
         }, 500);
         this.hideCards();
         this.timer.innerText = this.timeRemaining;
         this.ticker.innerText = this.currentScore;
+        //this.cards.assignValueToCards();
     }
 
+    // This function is not working. 
     hideCards() {
         this.cardsArray.forEach(card => {
             card.classList.remove('visible');
             card.classList.remove('matched');
-        })
+        });
     }
 
     flipCard(card) {
+        // If first time, then run function 'startCountDown();'
+
+        // If allowed to flip (no rule against flip returns true), then flip
         if (this.canFlipCard(card)) {
             this.audioController.flip();
+            // Time-out 0.3 sec to match visibility and sound-effect
             setTimeout(() => {
-                this.currentScore--;
+                this.currentScore -= 5;
                 this.ticker.innerText = this.currentScore;
                 // Add 'visible'-class to show card-content
                 card.classList.add('visible');
             }, 300);
-            //if statement (check for match)
-            if (this.cardToCheck)
+            // If there already is a 'cardToCheck', then check for match
+            if (this.cardToCheck) {
                 this.checkForCardMatch(card);
-            else
+                // If not, then this card will be the 'cardToCheck'    
+            } else {
                 this.cardToCheck = card;
+                console.log(this.cardToCheck);
+            }
         }
     }
 
@@ -78,6 +86,7 @@ class mixOrMatch {
             this.cardMisMatch(card, this.cardToCheck);
 
         this.cardToCheck = null;
+        console.log("CardToCheck=Null");
     }
 
     cardMatch(card1, card2) {
@@ -98,12 +107,11 @@ class mixOrMatch {
             card2.classList.remove('visible');
             this.busy = false;
         }, 1000);
-
     }
 
     getCardContent(card) {
-        // return card.getElementsByClassName('card-value')[0].src;
-        return this.innerText;
+        return card.innerHTML;
+        console.log(card.innerHTML);
     }
 
     // Should not start until first card-click
@@ -133,18 +141,18 @@ class mixOrMatch {
     shuffleCards() {
         // Fisher-Yates algorithm for shuffeling https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
         // Used for when the cards (images) are static and just moves around. Not what I intend to do.
-        // But may be useful in randomly assigning tihe equations to each card.
+        // But may be useful in randomly assigning the equations to each card.
         for (let i = this.cardsArray.length - 1; i > 0; i--) {
             let randomIndex = Math.floor(Math.random() * (i + 1));
             // The following regards changing order of css-grid. Not applicable for me.
             // The randomIndex should be applied to the cards.
-            //this.cardsArray[randomIndex].style.order = i;
-            //this.cardsArray[i].style.order = randomIndex;
+            this.cardsArray[randomIndex] = i;
+            this.cardsArray[i] = randomIndex;
         }
     }
     canFlipCard(card) {
         // If all instances that makes the card unflippable are false, then...
-        return !this.busy && !this.matchedCards.includes(card) && !this.cardToCheck
+        return !this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck && !card.classList.contains('visible');
     }
 }
 
@@ -170,8 +178,8 @@ $(document).ready(function() {
     //YouTube (https://www.youtube.com/watch?v=3uuQ3g92oPQ&t=2044s)
 
     let overlays = Array.from(document.getElementsByClassName('overlay-text'));
-    // In Halloween-tutorial cards have fixed class-values that are never changed (just shuffeled)
-    let cards = Array.from(document.getElementsByClassName('game-card')); //"card" in youtube-tutorial
+    // Make array of game-cards, just to number them, and use cards.length as how many we have...
+    let cards = Array.from(document.getElementsByClassName('game-card')); //("card" in youtube-tutorial)
     let game = new mixOrMatch(10, cards);
 
     overlays.forEach(overlay => {
@@ -179,24 +187,11 @@ $(document).ready(function() {
             overlay.classList.remove('visible');
             game.startGame();
         });
-        cards.forEach(card => { //card or game-card?
-            card.addEventListener('click', () => {
-                game.flipCard(card);
-            })
-        })
+    });
+    cards.forEach(card => { //card or game-card?
+        card.addEventListener('click', () => {
+            game.flipCard(card);
+        });
     });
 
-
-
-
-
-    // Card options
-    const cardArray = [
-        '6 + 3', '9',
-        '20 - 5', '15',
-        '15 + 6', '21',
-        '27 - 9', '18',
-        '13 + 5', '18',
-        '33 - 6', '27'
-    ]
 });
