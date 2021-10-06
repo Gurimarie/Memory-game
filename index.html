@@ -36,7 +36,7 @@
         <h1>Can you find the match?</h1>
         <!-- overlays for game-over etc -->
         <div id="start-text" class="overlay-text visible">Click to start</div>
-        <div id="victory-text" class="overlay-text">Congratulations, you won the game!
+        <div id="victory-text" class="overlay-text">Congratulations,<br>you won the game!
             <span class="overlay-text-small">Click to start over</span>
         </div>
         <div id="game-over-text" class="overlay-text">Sorry! Game over...
@@ -50,27 +50,27 @@
         </div>
         <div class="container" id="game-container">
             <div id="game-area1" class="row justify-content-around game-area">
-                <div class="col-3 col-lg-2 game-card card-1">6 + 3</div>
-                <div class="col-3 col-lg-2 game-card card-2">9</div>
-                <div class="col-3 col-lg-2 game-card card-3">20 - 5</div>
-                <div class="d-none d-lg-block game-card card-10">18</div>
+                <div class="col-3 col-lg-2 game-card question" data-type="value-1">6 + 3</div>
+                <div class="col-3 col-lg-2 game-card answer" data-type="value-1">9</div>
+                <div class="col-3 col-lg-2 game-card question" data-type="value-2">20 - 5</div>
+                <div class="d-none d-lg-block game-card answer" data-type="value-5">18</div>
             </div>
             <div id="game-area2" class="row justify-content-around game-area">
-                <div class="col-3 col-lg-2 game-card card-4">15</div>
-                <div class="col-3 col-lg-2 game-card card-5">15 + 6</div>
-                <div class="col-3 col-lg-2 game-card card-6">21</div>
-                <div class="d-none d-lg-block game-card card-11">33 - 6</div>
+                <div class="col-3 col-lg-2 game-card answer" data-type="value-2">15</div>
+                <div class="col-3 col-lg-2 game-card question" data-type="value-3">15 + 6</div>
+                <div class="col-3 col-lg-2 game-card answer" data-type="value-3">21</div>
+                <div class="d-none d-lg-block game-card question" data-type="value-6">33 - 6</div>
             </div>
             <div id="game-area3" class="row justify-content-around game-area">
-                <div class="col-3 col-lg-2 game-card card-7">27 - 9</div>
-                <div class="col-3 col-lg-2 game-card card-8">18</div>
-                <div class="col-3 col-lg-2 game-card card-9">13 + 5</div>
-                <div class="d-none d-lg-block game-card card-12">27</div>
+                <div class="col-3 col-lg-2 game-card question" data-type="value-4">27 - 8</div>
+                <div class="col-3 col-lg-2 game-card answer" data-type="value-4">19</div>
+                <div class="col-3 col-lg-2 game-card question" data-type="value-5">13 + 5</div>
+                <div class="d-none d-lg-block game-card answer" data-type="value-6">27</div>
             </div>
             <div id="game-area4" class="row justify-content-around game-area">
-                <div class="col-3 d-lg-none game-card card-10">18</div>
-                <div class="col-3 d-lg-none game-card card-11">33 - 6</div>
-                <div class="col-3 d-lg-none game-card card-12">27</div>
+                <div class="col-3 d-lg-none game-card answer" data-type="value-5">18</div>
+                <div class="col-3 d-lg-none game-card question" data-type="value-6">33 - 6</div>
+                <div class="col-3 d-lg-none game-card answer" data-type="value-6">27</div>
             </div>
         </div>
     </div>
