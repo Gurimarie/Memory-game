@@ -46,8 +46,11 @@ class mixOrMatch {
         //this.cards.assignValueToCards();
     }
 
-    // This function is not working. 
+    // This function is not working. Error 
     hideCards() {
+        //for (let card of this.cardsArray) {
+        //   card.classList.remove('visible');
+        //}
         this.cardsArray.forEach(card => {
             card.classList.remove('visible');
             card.classList.remove('matched');
@@ -67,36 +70,41 @@ class mixOrMatch {
                 // Add 'visible'-class to show card-content
                 card.classList.add('visible');
             }, 300);
-            // If there already is a 'cardToCheck', then check for match
+
             if (this.cardToCheck) {
+                // If there already is a 'cardToCheck', then check for match
+                console.log(card.innerHTML); // Just temporary, to check that it works...   
                 this.checkForCardMatch(card);
-                // If not, then this card will be the 'cardToCheck'    
             } else {
+                // If not, then this card will be the 'cardToCheck'
                 this.cardToCheck = card;
-                console.log(this.cardToCheck);
+                console.log(this.cardToCheck.innerHTML); // Just temporary, to check that it works...
             }
         }
     }
 
     //This must be 'check math-match' instead of string-match
     checkForCardMatch(card) {
-        if (this.getCardContent(card) == this.getCardContent(this.cardToCheck))
+        if (card.getAttribute('data-type') === this.cardToCheck.getAttribute('data-type')) {
             this.cardMatch(card, this.cardToCheck);
-        else
+            console.log("CardMatch"); // Just temporary, to check that it works...
+        } else {
             this.cardMisMatch(card, this.cardToCheck);
-
+            console.log("MisMatch"); // Just temporary, to check that it works...
+        }
         this.cardToCheck = null;
-        console.log("CardToCheck=Null");
+        console.log("CardToCheck=Null"); // Just temporary, to check that it works...
     }
 
     cardMatch(card1, card2) {
         this.matchedCards.push(card1);
         this.matchedCards.push(card2);
+        console.log("MatchedCards:", this.matchedCards.length, "of", (this.cardsArray.length - 3));
         card1.classList.add('matched');
         card2.classList.add('matched');
         this.audioController.match();
-        this.currentScore++;
-        if (this.matchedCards.length === this.cardsArray.length)
+        this.currentScore += 20;
+        if (this.matchedCards.length === (this.cardsArray.length - 3)) // -3 because of 3 extra/moved game-card-divs to use on big screens
             this.victory();
     }
 
@@ -109,9 +117,16 @@ class mixOrMatch {
         }, 1000);
     }
 
-    getCardContent(card) {
-        return card.innerHTML;
-        console.log(card.innerHTML);
+    //getCardContent(card) {
+    //return parseInt(card.innerHTML);
+    //}
+
+    shuffleCards(cardsArray) { // Fisher-Yates Shuffle Algorithm.
+        for (let i = cardsArray.length - 1; i > 0; i--) {
+            let randIndex = Math.floor(Math.random() * (i + 1));
+            cardsArray[randIndex].style.order = i;
+            cardsArray[i].style.order = randIndex;
+        }
     }
 
     // Should not start until first card-click
@@ -136,6 +151,7 @@ class mixOrMatch {
         clearInterval(this.countDown);
         this.audioController.victory();
         document.getElementById('victory-text').classList.add('visible');
+        // If score higher than "Highest score", then add currentScore
     }
 
     shuffleCards() {
@@ -180,7 +196,7 @@ $(document).ready(function() {
     let overlays = Array.from(document.getElementsByClassName('overlay-text'));
     // Make array of game-cards, just to number them, and use cards.length as how many we have...
     let cards = Array.from(document.getElementsByClassName('game-card')); //("card" in youtube-tutorial)
-    let game = new mixOrMatch(10, cards);
+    let game = new mixOrMatch(15, cards);
 
     overlays.forEach(overlay => {
         overlay.addEventListener('click', () => {
