@@ -9,7 +9,7 @@ class audioController {
         this.flipSound.play();
     }
     match() {
-        this.flipSound.play();
+        this.matchSound.play();
     }
     victory() {
         this.victorySound.play();
@@ -34,32 +34,45 @@ class mixOrMatch {
         this.currentScore = 100;
         this.timeRemaining = this.totalTime;
         this.matchedCards = [];
+        this.hideCards();
         this.busy = true;
         setTimeout(() => {
-            this.shuffleCards(this.cardsArray);
-            this.countDown = this.startCountDown();
+            this.shuffleCards(this.cardsArray); // WORKS; BUT POORLY. NEEDS TO GET BETTER!!
+            this.countDown = this.startCountDown(); // SHOULD THIS WAIT FOR FIRST CLICK??
             this.busy = false;
         }, 500);
-        this.hideCards();
         this.timer.innerText = this.timeRemaining;
         this.ticker.innerText = this.currentScore;
         //this.cards.assignValueToCards();
     }
 
-    // This function is not working. Error 
+    // UNDER BYGGING! IKKE FERDIG!
+    //assignValueToCards() {
+    //    forEach(card in cards) {
+    //        this.getAttribute("data-type") {
+    //            forEach("data-type") {
+    //                // Creates random numbers between 1 and 25 (+1 to make sure we don't get 0)
+    //                let num1 = Math.floor(Math.random() * 25) + 1;
+    //                let num2 = Math.floor(Math.random() * 25) + 1;
+    //            }
+    //            if (this.classList.includes("question")) {
+    //                this.innerHTML = "num1 + num2";
+    //            } else if (this.classList.includes("answer")) {
+    //                this.innerHTML = num1 + num2;
+    //            }
+    //        }
+    //    }
+    //}
+
     hideCards() {
-        //for (let card of this.cardsArray) {
-        //   card.classList.remove('visible');
-        //}
         this.cardsArray.forEach(card => {
             card.classList.remove('visible');
             card.classList.remove('matched');
         });
     }
 
+    // If first time, then run function 'startCountDown();
     flipCard(card) {
-        // If first time, then run function 'startCountDown();'
-
         // If allowed to flip (no rule against flip returns true), then flip
         if (this.canFlipCard(card)) {
             this.audioController.flip();
@@ -83,7 +96,7 @@ class mixOrMatch {
         }
     }
 
-    //This must be 'check math-match' instead of string-match
+    //This works, but does not account for possibility of several cards with same correct answer (should rather be calculation-match)
     checkForCardMatch(card) {
         if (card.getAttribute('data-type') === this.cardToCheck.getAttribute('data-type')) {
             this.cardMatch(card, this.cardToCheck);
@@ -117,18 +130,6 @@ class mixOrMatch {
         }, 1000);
     }
 
-    //getCardContent(card) {
-    //return parseInt(card.innerHTML);
-    //}
-
-    shuffleCards(cardsArray) { // Fisher-Yates Shuffle Algorithm.
-        for (let i = cardsArray.length - 1; i > 0; i--) {
-            let randIndex = Math.floor(Math.random() * (i + 1));
-            cardsArray[randIndex].style.order = i;
-            cardsArray[i].style.order = randIndex;
-        }
-    }
-
     // Should not start until first card-click
     startCountDown() {
         return setInterval(() => {
@@ -147,44 +148,52 @@ class mixOrMatch {
         document.getElementById('game-over-text').classList.add('visible');
     }
 
+    // MUST ADD UPDATE HIGHEST SCORE
     victory() {
         clearInterval(this.countDown);
         this.audioController.victory();
         document.getElementById('victory-text').classList.add('visible');
-        // If score higher than "Highest score", then add currentScore
-    }
 
-    shuffleCards() {
-        // Fisher-Yates algorithm for shuffeling https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
-        // Used for when the cards (images) are static and just moves around. Not what I intend to do.
-        // But may be useful in randomly assigning the equations to each card.
-        for (let i = this.cardsArray.length - 1; i > 0; i--) {
-            let randomIndex = Math.floor(Math.random() * (i + 1));
-            // The following regards changing order of css-grid. Not applicable for me.
-            // The randomIndex should be applied to the cards.
-            this.cardsArray[randomIndex] = i;
-            this.cardsArray[i] = randomIndex;
+        // If score higher than "Highest score", then add currentScore. NEEDS FIXING!!
+        if (this.currentScore > $("#highest-score").innerText) {
+            $("#highest-score").innerText = this.currentScore;
         }
     }
+
+    // WORKS, BUT NOT WELL. NEEDS FIX!!!
+    shuffleCards(cardsArray) {
+        console.log(cardsArray);
+        // Fisher-Yates shuffle algorithm https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
+        for (let i = cardsArray.length - 1; i > 0; i--) {
+            let randIndex = Math.floor(Math.random() * (i + 1));
+            // The following regards changing order of css-grid, copied from Halloween-game. Needs some ajustments?
+            // The randomIndex should be applied to the index of the cards in the cardsArray.
+            cardsArray[randIndex].style.order = i;
+            cardsArray[i].style.order = randIndex;
+        }
+        console.log(cardsArray);
+    }
+
     canFlipCard(card) {
         // If all instances that makes the card unflippable are false, then...
         return !this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck && !card.classList.contains('visible');
     }
 }
 
+// NEED TO LIMIT DARK COLORS SOMEHOW, AND CLEARLY SHOW OPEN AND MATCHED CARDS (WHITE BG OR SIMILAR)
 $(document).ready(function() {
     $("#color-shaker").click(function() {
         // Credit: Random-color-function from AndreFelipeCL, found at "https://stackoverflow.com/questions/20553036/random-color-in-jquery"
         $(".game-card").each(function(index) {
-            var colorR = Math.floor((Math.random() * 256));
-            var colorG = Math.floor((Math.random() * 256));
-            var colorB = Math.floor((Math.random() * 256));
+            var colorR = Math.floor((Math.random() * 156) + 100);
+            var colorG = Math.floor((Math.random() * 156) + 100);
+            var colorB = Math.floor((Math.random() * 156) + 100);
             $(this).css("background-color", "rgb(" + colorR + "," + colorG + "," + colorB + ")");
         });
         $("body").each(function() {
-            var colorR = Math.floor((Math.random() * 256));
-            var colorG = Math.floor((Math.random() * 256));
-            var colorB = Math.floor((Math.random() * 256));
+            var colorR = Math.floor((Math.random() * 156) + 100);
+            var colorG = Math.floor((Math.random() * 156) + 100);
+            var colorB = Math.floor((Math.random() * 156) + 100);
             $(this).css("background-color", "rgb(" + colorR + "," + colorG + "," + colorB + ")");
         });
 
@@ -196,8 +205,9 @@ $(document).ready(function() {
     let overlays = Array.from(document.getElementsByClassName('overlay-text'));
     // Make array of game-cards, just to number them, and use cards.length as how many we have...
     let cards = Array.from(document.getElementsByClassName('game-card')); //("card" in youtube-tutorial)
-    let game = new mixOrMatch(15, cards);
+    let game = new mixOrMatch(60, cards);
 
+    // ADD TIMEOUT SOMEWHERE TO AVOID ACCIDENTAL CLICKING TO START NEW GAME?
     overlays.forEach(overlay => {
         overlay.addEventListener('click', () => {
             overlay.classList.remove('visible');
