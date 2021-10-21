@@ -48,6 +48,9 @@ class mixOrMatch {
 
     // UNDER BYGGING! IKKE FERDIG!
     //assignValueToCards() {
+    // Better to have class: value-1, value-2... and data-type: answer or question?
+    // Do I need to set up value-1, value-2 etc with separate functions, or 
+    // if classes "all same?", "classList includes...", "
     //    forEach(card in cards) {
     //        this.getAttribute("data-type") {
     //            forEach("data-type") {
@@ -142,27 +145,33 @@ class mixOrMatch {
         }, 1000);
     }
 
+    // Add time-out here, so that quick click doesn't close and start new game prematurely?
     gameOver() {
         clearInterval(this.countDown);
         this.audioController.gameOver();
         document.getElementById('game-over-text').classList.add('visible');
     }
 
-    // MUST ADD UPDATE HIGHEST SCORE
+    // Add time-out here, so that quick click doesn't close and start new game prematurely?
     victory() {
         clearInterval(this.countDown);
         this.audioController.victory();
         document.getElementById('victory-text').classList.add('visible');
+        this.updateHighestScore();
+    }
 
-        // If score higher than "Highest score", then add currentScore. NEEDS FIXING!!
-        if (this.currentScore > $("#highest-score").innerText) {
+    // If score higher than "Highest score", then add currentScore. NEEDS FIXING!!
+    updateHighestScore() {
+
+        let highestScore = parseInt(document.getElementById("highest-score").innerText);
+        if (this.currentScore > highestScore) {
             $("#highest-score").innerText = this.currentScore;
         }
     }
 
     // WORKS, BUT NOT WELL. NEEDS FIX!!!
     shuffleCards(cardsArray) {
-        console.log(cardsArray);
+        console.log(cardsArray); // Just temporary, to check that it works...
         // Fisher-Yates shuffle algorithm https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
         for (let i = cardsArray.length - 1; i > 0; i--) {
             let randIndex = Math.floor(Math.random() * (i + 1));
@@ -171,7 +180,7 @@ class mixOrMatch {
             cardsArray[randIndex].style.order = i;
             cardsArray[i].style.order = randIndex;
         }
-        console.log(cardsArray);
+        console.log(cardsArray); // Just temporary, to check that it works...
     }
 
     canFlipCard(card) {
@@ -180,10 +189,10 @@ class mixOrMatch {
     }
 }
 
-// NEED TO LIMIT DARK COLORS SOMEHOW, AND CLEARLY SHOW OPEN AND MATCHED CARDS (WHITE BG OR SIMILAR)
 $(document).ready(function() {
     $("#color-shaker").click(function() {
         // Credit: Random-color-function from AndreFelipeCL, found at "https://stackoverflow.com/questions/20553036/random-color-in-jquery"
+        // Modified to only create lighter tones for improved readability (originally (Math.random() * 256))
         $(".game-card").each(function(index) {
             var colorR = Math.floor((Math.random() * 156) + 100);
             var colorG = Math.floor((Math.random() * 156) + 100);
@@ -199,6 +208,8 @@ $(document).ready(function() {
 
     });
 
+
+
     // Credit: PortEXE, How To Code A Card Game In Plain JavaScript - Spooky Halloween Edition, 
     //YouTube (https://www.youtube.com/watch?v=3uuQ3g92oPQ&t=2044s)
 
@@ -208,6 +219,7 @@ $(document).ready(function() {
     let game = new mixOrMatch(60, cards);
 
     // ADD TIMEOUT SOMEWHERE TO AVOID ACCIDENTAL CLICKING TO START NEW GAME?
+    // Cannot simply do time-out, because that only happens once. Must be on every call (at least on victory and game-over).
     overlays.forEach(overlay => {
         overlay.addEventListener('click', () => {
             overlay.classList.remove('visible');
@@ -219,5 +231,16 @@ $(document).ready(function() {
             game.flipCard(card);
         });
     });
+
+    // Credit: Modal Login Form from https://www.w3schools.com/howto/howto_css_login_form.asp
+    // Get the modal
+    var modal = document.getElementById('id01');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
 
 });

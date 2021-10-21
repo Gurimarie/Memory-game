@@ -20,7 +20,7 @@
     <header>
         <nav class="navbar fixed-top navbar-expand-md d-flex justify-content-between">
             <a href="index.html" class="navbar-brand">Memory-game</a>
-            <button>Log-In/Sign-Up</button>
+            <button onclick="document.getElementById('id01').style.display='block'">Log-In/Sign-Up</button>
         </nav>
     </header>
 
@@ -34,6 +34,36 @@
             </button>
         </div>
         <h1>Can you find the match?</h1>
+        <!-- Credit: Modal Login Form from https://www.w3schools.com/howto/howto_css_login_form.asp -->
+        <!-- The Modal -->
+        <div id="id01" class="modal">
+            <!-- Modal Content -->
+            <form class="modal-content" action="/action_page.php">
+                <div class="modal-headline">
+                    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                    <h2>Sign in to save your score!</h2>
+                </div>
+
+                <div class="container">
+                    <label for="uname"><b>Username</b></label>
+                    <input type="text" placeholder="Enter Username" name="uname" required>
+
+                    <label for="psw"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="psw" required>
+
+                    <button type="submit" class="submit-button">Login</button>
+                    <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+                </label>
+                </div>
+
+                <div class="container" style="background-color:#f1f1f1">
+                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                    <span class="psw float-right">Forgot <a href="#">password?</a></span>
+                </div>
+            </form>
+        </div>
+
         <!-- overlays for game-over etc -->
         <div id="start-text" class="overlay-text visible">Click to start</div>
         <div id="victory-text" class="overlay-text">Congratulations,<br>you won the game!
@@ -46,31 +76,31 @@
             <!--Div for score and timer, or should that be somewhere else??-->
             <div class="inline-block highest-score">Highest score: <span id="highest-score">0</span></div>
             <div class="inline-block timer">Time: <span id="timer"></span>sec</div>
-            <div class="inline-block current-score">Current score: <span id="current-score"></span></div>
+            <div class="inline-block current-score">Current score: <span id="current-score">0</span></div>
         </div>
         <div class="container" id="game-container">
             <div id="game-area1" class="row justify-content-around game-area">
-                <div class="col-3 col-lg-2 game-card question" data-type="value-1">6 + 3</div>
-                <div class="col-3 col-lg-2 game-card answer" data-type="value-1">9</div>
-                <div class="col-3 col-lg-2 game-card question" data-type="value-2">20 - 5</div>
-                <div class="d-none d-lg-block game-card answer" data-type="value-5">18</div>
+                <div class="col-3 col-lg-2 game-card card-1 question" data-type="value-1">6 + 3</div>
+                <div class="col-3 col-lg-2 game-card card-2 answer" data-type="value-1">9</div>
+                <div class="col-3 col-lg-2 game-card card-3 question" data-type="value-2">20 - 5</div>
+                <div class="d-none d-lg-block game-card card-10 answer" data-type="value-5">18</div>
             </div>
             <div id="game-area2" class="row justify-content-around game-area">
-                <div class="col-3 col-lg-2 game-card answer" data-type="value-2">15</div>
-                <div class="col-3 col-lg-2 game-card question" data-type="value-3">15 + 6</div>
-                <div class="col-3 col-lg-2 game-card answer" data-type="value-3">21</div>
-                <div class="d-none d-lg-block game-card question" data-type="value-6">33 - 6</div>
+                <div class="col-3 col-lg-2 game-card card-4 answer" data-type="value-2">15</div>
+                <div class="col-3 col-lg-2 game-card card-5 question" data-type="value-3">15 + 6</div>
+                <div class="col-3 col-lg-2 game-card card-6 answer" data-type="value-3">21</div>
+                <div class="d-none d-lg-block game-card card-11 question" data-type="value-6">33 - 6</div>
             </div>
             <div id="game-area3" class="row justify-content-around game-area">
-                <div class="col-3 col-lg-2 game-card question" data-type="value-4">27 - 8</div>
-                <div class="col-3 col-lg-2 game-card answer" data-type="value-4">19</div>
-                <div class="col-3 col-lg-2 game-card question" data-type="value-5">13 + 5</div>
-                <div class="d-none d-lg-block game-card answer" data-type="value-6">27</div>
+                <div class="col-3 col-lg-2 game-card card-7 question" data-type="value-4">27 - 8</div>
+                <div class="col-3 col-lg-2 game-card card-8 answer" data-type="value-4">19</div>
+                <div class="col-3 col-lg-2 game-card card-9 question" data-type="value-5">13 + 5</div>
+                <div class="d-none d-lg-block game-card card-12 answer" data-type="value-6">27</div>
             </div>
             <div id="game-area4" class="row justify-content-around game-area">
-                <div class="col-3 d-lg-none game-card answer" data-type="value-5">18</div>
-                <div class="col-3 d-lg-none game-card question" data-type="value-6">33 - 6</div>
-                <div class="col-3 d-lg-none game-card answer" data-type="value-6">27</div>
+                <div class="col-3 d-lg-none game-card card-10 answer" data-type="value-5">18</div>
+                <div class="col-3 d-lg-none game-card card-11 question" data-type="value-6">33 - 6</div>
+                <div class="col-3 d-lg-none game-card card-12 answer" data-type="value-6">27</div>
             </div>
         </div>
     </div>
