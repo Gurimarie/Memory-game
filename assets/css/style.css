@@ -75,7 +75,7 @@ input[type=password] {
 /* Set a style for submit-buttons */
 
 .submit-button {
-    background-color: #27a07b;
+    background-color: rgb(48, 122, 73);
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -273,6 +273,14 @@ input[type=password] {
 
 .modal-content h3 {
     margin: 10px 0;
+}
+
+
+/* Back-page */
+
+#back-btn {
+    background-color: white;
+    width: auto;
 }
 
 

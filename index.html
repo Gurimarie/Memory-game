@@ -20,7 +20,7 @@
     <header>
         <nav class="navbar fixed-top navbar-expand-md d-flex justify-content-between">
             <a href="index.html" class="navbar-brand">Memory-game</a>
-            <button onclick="document.getElementById('sign-in-modal').style.display='block'">Log-In/Sign-Up</button>
+            <button onclick="document.getElementById('sign-in-modal').style.display='block'">Log-In</button>
         </nav>
     </header>
 
@@ -86,7 +86,7 @@
     <!-- The Modal -->
     <div id="sign-in-modal" class="modal">
         <!-- Modal Content -->
-        <form class="modal-content" action="/action_page.php">
+        <form class="modal-content" action="back-page.html" method="POST">
             <div class="modal-headline">
                 <span onclick="document.getElementById('sign-in-modal').style.display='none'" class="close" title="Close Modal">&times;</span>
                 <h2>Sign in to save your score!</h2>
@@ -107,7 +107,7 @@
 
             <div class="container" style="background-color:#f1f1f1">
                 <button type="button" onclick="document.getElementById('sign-in-modal').style.display='none'" class="cancelbtn">Cancel</button>
-                <span class="psw float-right">Forgot <a href="#">password?</a></span>
+                <span class="psw float-right">Forgot <a href="back-page.html">password?</a></span>
             </div>
         </form>
     </div>
