@@ -103,7 +103,7 @@ input[type=password] {
 
 /* The Modal (background) */
 
-.modal {
+#sign-in-modal {
     display: none;
     /* Hidden by default */
     position: fixed;
