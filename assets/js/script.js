@@ -26,6 +26,7 @@ class mixOrMatch {
         this.timeRemaining = totalTime;
         this.timer = document.getElementById('timer');
         this.ticker = document.getElementById('current-score');
+        this.highScore = document.getElementById('highest-score');
         this.audioController = new audioController();
     }
 
@@ -46,8 +47,8 @@ class mixOrMatch {
         //this.cards.assignValueToCards();
     }
 
-    // UNDER BYGGING! IKKE FERDIG!
-    //assignValueToCards() {
+    // UNDER BYGGING! IKKE FERDIG! AssignValueToCards()
+    // assignValueToCards() {
     // Better to have class: value-1, value-2... and data-type: answer or question?
     // Do I need to set up value-1, value-2 etc with separate functions, or 
     // if classes "all same?", "classList includes...", "
@@ -76,6 +77,7 @@ class mixOrMatch {
 
     // If first time, then run function 'startCountDown();
     flipCard(card) {
+
         // If allowed to flip (no rule against flip returns true), then flip
         if (this.canFlipCard(card)) {
             this.audioController.flip();
@@ -120,8 +122,11 @@ class mixOrMatch {
         card2.classList.add('matched');
         this.audioController.match();
         this.currentScore += 20;
-        if (this.matchedCards.length === (this.cardsArray.length - 3)) // -3 because of 3 extra/moved game-card-divs to use on big screens
-            this.victory();
+        if (this.matchedCards.length === (this.cardsArray.length - 3)) { // -3 because of 3 extra/moved game-card-divs to use on big screens
+            setTimeout(() => {
+                this.victory();
+            }, 1500);
+        };
     }
 
     cardMisMatch(card1, card2) {
@@ -158,16 +163,21 @@ class mixOrMatch {
         this.audioController.victory();
         document.getElementById('victory-text').classList.add('visible');
         this.updateHighestScore();
+        //this.busy = true;
+        //setTimeout(() => {
+        //    this.busy = false;
+        //}, 2000);
+
     }
 
     // If score higher than "Highest score", then add currentScore. NEEDS FIXING!!
     updateHighestScore() {
+        if (this.currentScore > this.highScore.innerText) {
+            console.log("New high score!"); // Temporary, to check that it works...
+            this.highScore.innerText = this.currentScore;
+        };
+    };
 
-        let highestScore = parseInt(document.getElementById("highest-score").innerText);
-        if (this.currentScore > highestScore) {
-            $("#highest-score").innerText = this.currentScore;
-        }
-    }
 
     // WORKS, BUT NOT WELL. NEEDS FIX!!!
     shuffleCards(cardsArray) {
@@ -234,13 +244,13 @@ $(document).ready(function() {
 
     // Credit: Modal Login Form from https://www.w3schools.com/howto/howto_css_login_form.asp
     // Get the modal
-    var modal = document.getElementById('id01');
+    var modal = document.getElementById('sign-in-modal');
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }
-    }
+    };
 
 });
