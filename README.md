@@ -6,7 +6,7 @@ This is the website for a game where 12 cards, and each card is randomly assigne
 To adde to the games difficulty, there is a timelimit of 1 minute to find and open all the pairs, and there is also a limit regarding how many cards you may open without finding a pair (see user-instructions by clicking on the questionmark-button in the top right of the website.) 
 
 
-![Picture of different view-port-displays](assets/images/readme-images/am-i-responsive.jpg)
+![Picture of different view-port-displays](assets/images/readme-images/responsive3.jpg)
 
 Click [here](https://gurimarie.github.io/Memory-game/) to view the website
 
@@ -26,18 +26,18 @@ In the future there will be an option to log in to keep track of past scores, an
 
 ### Site owner goals
 The site-owner enjoys working out the brain a little, as long as it is fun, and not too hard, so as long as the users (including the owner) are enjoying themselves, the project-scope is reached.
-(But alas not yet, as the game-part of the website is not yet finished.)
+
 
 
 
 ## Design
 
 ### Colour scheme:
-The colour-scheme is randomized, so that the user may choose a setting that pleases them or that fits their mood when playing. The colours are picked at random from all the possible colours in the RGB-system, and the user may press the button as may times as they wish, until a pleasing colour emerges. Or they may stay with the default blu-tones that are there when the website is loaded or refreshed.  
+The colour-scheme is randomized, so that the user may choose a setting that pleases them or that fits their mood when playing. The colours are picked at random from all the possible colours in the RGB-system, and the user may press the button as may times as they wish, until a pleasing colour emerges. Or they may stay with the default blue-tones that are there when the website is loaded or refreshed.  
 
 
 ### Typography:
-The font Permanent Marker has a juvenile and almost grafitti-like aspect to it, and it is well suited for the colourful and sometimes psychedelic colour-combinations that form when we use the random-colour-button. It also seems to have a fast and "in motion"-feeling, that works well with the speed needed to complete the tast at hand in less that 1 minute. 
+The font Permanent Marker has a juvenile and almost grafitti-like aspect to it, and it is well suited for the colourful and sometimes psychedelic colour-combinations that form when we use the random-colour-button. It also seems to have a fast and "in motion"-feeling, that works well with the speed needed to complete the task at hand in less that 1 minute. 
 
 ![Picture of fonts samples](assets/images/readme-images/Fonts-permanent-parker-and-montserrat.JPG)
 
@@ -61,17 +61,17 @@ Press the painters-button to add new colours randomly to all the "game-cards" an
 ![Picture of button for random colours](assets/images/readme-images/random-color-button.JPG)
 
 - ### Instructions
-Instructions for how to play are added in a modal, in order to keep the webpage itself clean and less distractive (than it would have been with instructions).
+Instructions for how to play are added in a modal, in order to keep the webpage itself clean and less distractive (than it would have been with instructions). Click somewhere outside modal to go back to game.
 
 
 
 #### Future features:
-- A game that is fully functional and that works.
-- Option to play as guest, or to log in with user, to keep track of scores, see other users best scores, and keep chosen colour-schemes.
-- A timer that counts down as you solve the tasks, and when the counter reaches 0, its game over.
-- A beeper that makes a noise every second for the last 10 seconds of each game (with option to turn sound off).
-- Happy-sound when a good match is made.
+- There are 6 pairs to be found on the game-board, and the numbers making up the questions and answers are currently static (same 6 equations in every game), but in the future they will be randomized to create new equations each time the game is started. 
+- Increasing difficulty (if player does well)
 - Possibility to choose between several different game-question-types. Different math-questions matching questions with correct answer (either addition, subtraction, miltiplication or divison), mathing chemical formulas with correct name, matching two parts of a famous quote, and much more.
+- Option to play as guest, or to log in with user, to keep track of scores, see other users best scores, and keep chosen colour-schemes (the login-feature is added, but not functioning yet).
+- A beeper that makes a noise every second for the last 10 seconds of each game (with option to turn sound off).
+
 
 
 
@@ -81,10 +81,13 @@ Instructions for how to play are added in a modal, in order to keep the webpage 
 Instructions for playing the game have been added as a modal, overlaying the whole page. This option has been chosen, in order to be able to explain the game, without having a lot of tekst on the page. The modal is triggered by clicking the question-mark-button on the top right.
 
 ### Media-query
-Added a media-query to to scale main headline (h1) well beth for smaller and larger devicer. 
+Added a media-query to scale main headline (h1) to fit better on smaller and larger devices. 
 
-### Several right answers
-What if two equations on the board have same answer? The check-answer must do the calculation, and not just look for pairs, otherwise a right answer may be rejected because it is not the right pair.
+### "Flipping" the cards
+I have looked at several solutions, including having two cards on top of each other and flipping the top one to reveal the bottom one, but I decided to go with transparent text on the cards when "unflipped", and black text when "flipped". It is a simple solution, and it does the trick. 
+
+### Random colours sometimes gives poor readability
+Having completely random colours on cards and background, sometimes made the black text poorly visible, due to low contrast. I have therefore removed the darkest colours from the random colour-generator by only allowing colours above 100 on each of the RGB-channels (full range is 0-256, where the smaller numbers are more saturated).
 
 
 
@@ -100,7 +103,7 @@ What if two equations on the board have same answer? The check-answer must do th
 - Google Fonts
 - Font-awsome
 - YouTube
-
+- www.w3schools.com
 
 
 ## Testing
@@ -113,22 +116,25 @@ Html-content checked with https://validator.w3.org/nu/#textarea
 
 #### CSS validation
 CSS tested with W3C CSS Validator Service. 
-After having corrected a few small errors, everything is as it should be.
 
 ![Picture of CSS verification](assets/images/readme-images/css-validator.JPG)
 
-JS validation
-There is very little JavaScript in the project at present, but from my first-time use of the JS-validator (https://jshint.com/), it seemed OK.
+#### JS validation
+Tested with the JS-validator (https://jshint.com/). No errors, but the validator remarks that the code needs "ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz)", and that "'arrow function syntax (=>)' is only available in ES6 (use 'esversion: 6')."
 
 
 ### Testing for user stories in UX-section:
 
 ### Further testing:
 #### Test on different screen sizes:
-The top of the page has been fine even on small devices when testing in chrome developer tools, but on the "Am I responsive"-picture it seemed cut off, so there may be a problem in some devices.
+There is a problem with alignment on larger devices. If starting a new I would have chosen to make the cards in css-grid or directly in JavaScript instead of in html.
 
 #### Test on different browsers:
-Tested in Chrome and Edge, and works fine on both of those browsers.
+Tested in Chrome, Firefox and Edge, and the game works fine in all these browsers, but the card-sizes are un-even in Firefox (alignment-problem).
+
+"405 Not allowed"-error on login:
+<br>
+The login-function is not operational, but trying to log in is supposed to lead to the error-page "pack-page.html" that has a button to return to the game, but it currently leads to a "405 Not allowed"-page, even though the URL-address is correct. The error comes when accessing the page through the git-hub-pages-address (both Firefox and Chrome), not when opening to browser directly from Visual Studio Code.
 
 <br>
 
@@ -157,14 +163,20 @@ The random colour-button stopped working for a while, but it turned out to be be
 
 
 ## Unfixed bugs:
-### Website height
-The website is supposed to be the height of the viewport, with no need for scrolling, but I have difficulty managing that while keeping nav and footer fixed at top and bottom. As it is there is a little scroll available, but it is not necessary to scroll the page to see it all, so it does not seem to hinder the game. I have been tinckering with this a bit, and it seems to work now on most devices, but I am not certain it is truly gone.
 
-### The game itself is not set up yet, only planned
-It will take a bit of research to figure out how to randomly assign pairs of random equations and their respective answers to the "game-cards", 
+### Matched-cards-sound
+When some cards are matched, the Matched-cards-sound is not triggered. Especially in "narrow view" (only 3 cards per row)
 
+### There should be a time-out before overlay can be clicked away
+A time-out on the eventListener for click on the overlays, doen't work, as it  only gives time-out once, when first loaded. Must be triggered on every call (at least on the game-over-overlay).
+I have added a time-out to the gameOver-function, but it is not functioning yet.
 
+### Start of timer-countdown
+The timer starts when you click on the "Start game"-overlay. It would be better if it would not start until first card-click, but I have not solved this issue yet. 
 
+### Get 405 Not allowed-error on login
+The login-function is not operational, but trying to log in is supposed to lead to the error-page "pack-page.html" that has a button to return to the game, but it currently leads to a "405 Not allowed"-page, even though the URL-address is correct. The error comes when accessing the page throug the git-hub-pages-address (both Firefox and Chrome), not when opening to browser directly from Visual Studio Code.
+![Picture of error](assets/images/readme-images/not-allowed.JPG)
 
 ## Deployment
 This project was developed using Visual Studio Code, committed to git and pushed to GitHub using git-extensions in Visual Studio Code.
@@ -177,12 +189,12 @@ This project was developed using Visual Studio Code, committed to git and pushed
 5. Under "Source", select the correct branch (in this case, “main”), and click on the Save-button.
 
 6. The page will refresh, and the message on top says:
-“Your site is ready to be published at: https://gurimarie....love-maths/.”
+“Your site is ready to be published at: https://gurimarie.github.io/Memory-game/”
 Use this link to access the deployed website.
 
 
 ### Making a local clone:
-1. Follow this link to the [projects Github repository](https://github.com/Gurimarie/Memory-game)).
+1. Follow this link to the [projects Github repository](https://gurimarie.github.io/Memory-game/)).
 2. Under the repository name, click the green "Code"-button, and choose "https" and click on the "Download Zip"-option.
 3. When the zip is downloaded, open the folder, and move the unzipped folder to where you wish to store it on your computer.
 4. Open your Visual Studio Code (or other programming-software), click File, Open Folder, and choose the unzipped folder you just downloaded from where you saved it to.
@@ -205,20 +217,28 @@ Use this link to access the deployed website.
 - Code Institute courses for everything
 - https://getbootstrap.com/docs/4.1/components/ for modal and info and examples of different grid-options and visibility.
 - Overlay-details (html and CSS) from YouTube-channel "Web Dev Simplified", video "How to Code a Card Matching Game"
+- https://www.w3schools.com/jsref/prop_element_classlist.asp
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Remainder
+- Modal Login Form from https://www.w3schools.com/howto/howto_css_login_form.asp
+
 #### Tutorials for memory-game:
----- Adam Khoury, Memory Game Programming JavaScript Tutorial, YouTube (https://www.youtube.com/watch?v=c_ohDPWmsM0)
+- Adam Khoury, Memory Game Programming JavaScript Tutorial, YouTube (https://www.youtube.com/watch?v=c_ohDPWmsM0)
 - PortEXE, How To Code A Card Game In Plain JavaScript - Spooky Halloween Edition, YouTube (https://www.youtube.com/watch?v=3uuQ3g92oPQ&t=2044s)
 
-### Content:
+
 
 ### Media used:
 - Sounds from Freesound.org
+<br>
 Flip-sound: https://freesound.org/people/Splashdust/sounds/84322/
+<br>
 Match-sound: https://freesound.org/people/Tuudurt/sounds/362445/
+<br>
 Victory-sound: https://freesound.org/people/FunWithSound/sounds/456966/
+<br>
 Game over-sound: https://freesound.org/people/noirenex/sounds/159408/
 
-### Acknowledgements:
+
 
 
 
